@@ -437,13 +437,13 @@ for i= 1:size(data,3)
         % plot(thetatest_s,valstest_s,'-x') %
 
         % decide which method to use
-        pfmethod = get_option(varargin,'pfmethod','trap');
+        pfmethod = get_option(varargin,'pfmethod','trapz');
         switch pfmethod
             case 'peakfit'
                 % slow and fine in case of very few points in each interval
-                intG(k) = lorentzIntegral(theta_k,val_k,r_min_max)
+                intG(k) = lorentzIntegral(theta_k,val_k,r_min_max);
 
-            case 'trap'
+            case 'trapz'
                 % fast and fine in case of many points in each interval
                 intG(k) = trapz(theta_k,val_k);
         end
